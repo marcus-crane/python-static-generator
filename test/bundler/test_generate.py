@@ -31,3 +31,10 @@ def test_generate_create_directories_success():
     assert actual is True
     for folder in folders:
         assert os.path.exists(f"{tempdir.name}/{folder}") is True
+
+
+def test_generate_create_directories_failure():
+    folders = ['test', 'hi']
+    directory = 'place_that_does_not_exist'
+    with pytest.raises(FileNotFoundError):
+        generate.make_directories(directory, folders)

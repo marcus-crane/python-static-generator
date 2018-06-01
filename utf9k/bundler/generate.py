@@ -15,5 +15,4 @@ def make_directories(path, directories):
             make_directory(f"{path}/{directory}")
         return True
     except FileExistsError as FileException:
-        return FileException
-
+        raise FileException

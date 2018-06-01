@@ -1,5 +1,5 @@
 class Constants:
     DIRECTORIES = [
         'assets',
-        'programming'
+        'programming',
     ]
