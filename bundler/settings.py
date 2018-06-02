@@ -6,3 +6,4 @@ class Constants:
         '.md',
     ]
     CONTENT_DIR = "content"
+    BUILD_DIR = "output"

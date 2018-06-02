@@ -1,5 +1,5 @@
-import tempfile
 import os
+import tempfile
 
 import pytest
 
@@ -38,3 +38,25 @@ def test_generate_create_directories_failure():
     directory = 'place_that_does_not_exist'
     with pytest.raises(FileNotFoundError):
         generate.make_directories(directory, folders)
+
+
+def test_init_build_directory_first_time():
+    tempdir = tempfile.TemporaryDirectory()
+    build_dir = 'output'
+    path = f"{tempdir.name}/{build_dir}"
+    folders = ['crap', 'hotdogs']
+    generate.init_build_directory(path, folders)
+    for folder in folders:
+        assert os.path.exists(f"{path}/{folder}")
+
+
+def test_init_build_directory_overwrite():
+    tempdir = tempfile.TemporaryDirectory()
+    build_dir = 'build'
+    path = f"{tempdir.name}/{build_dir}"
+    os.mkdir(path)
+    assert os.path.exists(path) is True
+    folders = ['poop', 'hah']
+    generate.init_build_directory(path, folders)
+    for folder in folders:
+        assert os.path.exists(f"{path}/{folder}")
