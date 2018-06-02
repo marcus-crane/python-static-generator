@@ -16,9 +16,9 @@ This whole thing started when I came across [sorg](https://github.com/brandur/so
 
 Here's some links that describe different types of content I want to host on my site. They're all just markdown but with slight variations:
 
-* [articles](/docs/content/articles.md)
-* [projects](/docs/content/projects.md)
-* [reviews](/docs/content/reviews.md)
-* [snippets](/docs/content/snippets.md)
-* [technical](/docs/content/technical.md)
-* [thoughts](/docs/content/thoughts.md)
+* [articles](/docs/articles.md)
+* [projects](/docs/projects.md)
+* [reviews](/docs/reviews.md)
+* [snippets](/docs/snippets.md)
+* [technical](/docs/technical.md)
+* [thoughts](/docs/thoughts.md)
