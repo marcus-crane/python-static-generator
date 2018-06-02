@@ -1,5 +1,8 @@
 class Constants:
     DIRECTORIES = [
-        'assets',
-        'programming',
+        'snippets',
     ]
+    EXTENSIONS = [
+        '.md',
+    ]
+    CONTENT_DIR = "content"
