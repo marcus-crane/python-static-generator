@@ -21,4 +21,4 @@ Here's some links that describe different types of content I want to host on my 
 * [reviews](/docs/content/reviews.md)
 * [snippets](/docs/content/snippets.md)
 * [technical](/docs/content/technical.md)
-* [thoughts](/docs/content-types/thoughts.md)
+* [thoughts](/docs/content/thoughts.md)
