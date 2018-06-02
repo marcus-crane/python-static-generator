@@ -1,4 +1,5 @@
 from markdown.projects import Project
+from test import utils
 
 
 def test_parse_project_data():
@@ -25,5 +26,17 @@ def test_project_missing_half_meta():
     expected = {'title': 'Neat', 'description': 'A project', 'year': '1970',
                 'lang': '', 'css': '', 'js': ''}
     project = Project(post)
+    actual = project._get_metadata()
+    assert expected == actual
+
+
+def test_parse_project_from_file():
+    post = utils.load_fixture(__file__, 'project.md')
+    project = Project(post)
+    expected = {'title': 'My cool Python project',
+                'description': 'This project does this and that. Whoa!',
+                'year': '1970', 'lang': 'python',
+                'css': '/css/my-cool-python-project.css',
+                'js': '/js/my-cool-python-project.js'}
     actual = project._get_metadata()
     assert expected == actual

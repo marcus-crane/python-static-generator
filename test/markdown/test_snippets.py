@@ -1,4 +1,5 @@
 from markdown.snippets import Snippet
+from test import utils
 
 
 def test_parse_snippet_data():
@@ -23,5 +24,14 @@ def test_snippet_missing_half_meta():
     post = "---\ntitle: Snip Snip\nlang: go\n---\n"
     expected = {'title': 'Snip Snip', 'lang': 'go', 'link': ''}
     snippet = Snippet(post)
+    actual = snippet._get_metadata()
+    assert expected == actual
+
+
+def test_parse_snippet_from_file():
+    post = utils.load_fixture(__file__, 'snippet.md')
+    snippet = Snippet(post)
+    expected = {'title': 'Appending to an IMAP inbox', 'lang': 'python',
+                'link': 'https://github.com/example/butts'}
     actual = snippet._get_metadata()
     assert expected == actual
