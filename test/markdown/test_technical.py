@@ -1,4 +1,4 @@
-from utf9k.markdown.technical import Technical
+from markdown.technical import Technical
 
 
 def test_parse_technical_data():

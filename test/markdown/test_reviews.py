@@ -1,4 +1,4 @@
-from utf9k.markdown.reviews import Review
+from markdown.reviews import Review
 
 
 def test_parse_review_data():

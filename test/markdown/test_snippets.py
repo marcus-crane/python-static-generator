@@ -1,4 +1,4 @@
-from utf9k.markdown.snippets import Snippet
+from markdown.snippets import Snippet
 
 
 def test_parse_snippet_data():

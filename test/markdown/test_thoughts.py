@@ -1,4 +1,4 @@
-from utf9k.markdown.thoughts import Thought
+from markdown.thoughts import Thought
 
 
 def test_parse_thought_data():

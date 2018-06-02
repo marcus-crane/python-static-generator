@@ -1,4 +1,4 @@
-from utf9k.markdown.articles import Article
+from markdown.articles import Article
 
 
 def test_parse_article_data():

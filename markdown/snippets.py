@@ -1,4 +1,4 @@
-from utf9k.markdown.base import Base
+from markdown.base import Base
 
 
 class Snippet(Base):

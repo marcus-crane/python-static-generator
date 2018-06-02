@@ -1,14 +1,14 @@
-from utf9k.markdown.base import Base
+from markdown.base import Base
 
 
-class Technical(Base):
+class Article(Base):
 
     def __init__(self, content):
-        super(Technical, self).__init__(content)
+        super(Article, self).__init__(content)
 
     def _get_metadata(self):
         return {
             'title': self.meta.get('title', ''),
             'date': self.meta.get('date', ''),
-            'lang': self.meta.get('lang', '')
+            'excerpt': self.meta.get('excerpt', '')
         }

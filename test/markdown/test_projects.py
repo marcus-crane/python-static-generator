@@ -1,4 +1,4 @@
-from utf9k.markdown.projects import Project
+from markdown.projects import Project
 
 
 def test_parse_project_data():
