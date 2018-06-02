@@ -1,6 +1,7 @@
 from utf9k.markdown import content
 from test import utils
 
+
 def test_parse_title():
     post = "---\ntitle: This is a title\n---\n"
     expected = {'title': 'This is a title'}
