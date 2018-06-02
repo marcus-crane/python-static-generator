@@ -1,6 +1,7 @@
 from markdown.articles import Article
 from test import utils
 
+
 def test_parse_article_data():
     post = "---\ntitle: A good article\ndate: 1970-01-01\nexcerpt: This " \
            "is an article about stuff\n---\n"
