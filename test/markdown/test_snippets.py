@@ -1,4 +1,4 @@
-from utf9k.markdown.snippet import Snippet
+from utf9k.markdown.snippets import Snippet
 
 
 def test_parse_snippet_data():
@@ -19,7 +19,7 @@ def test_missing_snippet_data():
     assert expected == actual
 
 
-def test_only_missing_link():
+def test_snippet_missing_half_meta():
     post = "---\ntitle: Snip Snip\nlang: go\n---\n"
     expected = {'title': 'Snip Snip', 'lang': 'go', 'link': ''}
     snippet = Snippet(post)

@@ -21,7 +21,6 @@ tags:
 	- ps2
 	- psp
 year: 1970
-lang: python
 header: /img/header/gitaroo-man.jpg
 ---
 
