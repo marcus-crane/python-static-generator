@@ -1,4 +1,4 @@
-from utf9k.markdown.classes.base import Base
+from utf9k.markdown.base import Base
 from test import utils
 
 
@@ -52,7 +52,7 @@ def test_parse_sfw_and_language():
 
 
 def test_parse_file():
-    post = utils.load_fixture(__file__, '../fixtures/post.md')
+    post = utils.load_fixture(__file__, 'post.md')
     expected = {'title': 'This is a post', 'date': '2018-01-01',
                 'sfw': 'no', 'lang': 'go', 'testing': 'yes'}
     actual = Base.extract_metadata(post)
