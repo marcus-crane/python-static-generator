@@ -1,6 +1,6 @@
 import os
 
 
-def load_fixture(file, filename):
-    with open(f"{os.path.dirname(file)}/fixtures/{filename}") as file:
+def load_fixture(file, path):
+    with open(f"{os.path.dirname(file)}/{path}") as file:
         return file.read()
