@@ -7,4 +7,5 @@ class PostRenderer(mistune.Renderer):
         if not lang:
             code = mistune.escape(code)
             return f'<pre class="code"><code>{code}</code></pre>'
-        return f'<pre class="code" data-lang="{lang}"><code>{code}</code></pre>'
+        return f'<pre class="code" data-lang="{lang}">' \
+               f'<code>{code}</code></pre>'
