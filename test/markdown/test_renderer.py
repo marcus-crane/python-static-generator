@@ -56,13 +56,3 @@ def test_render_single_blockquote_markdown():
     render = mistune.Markdown(renderer=renderer)
     actual = render(quote)
     assert expected == actual
-
-
-def test_render_multiline_blockquote_markdown():
-    quote = "> This is a thing.\n> Some words!"
-    expected = f"<blockquote><p>This is a thing.\nSome " \
-               f"words!</p>\n</blockquote>"
-    renderer = PostRenderer()
-    render = mistune.Markdown(renderer=renderer)
-    actual = render(quote)
-    assert expected == actual

@@ -3,6 +3,14 @@ title: Parsing a package.json into a Golang struct
 lang: go
 ---
 
+While working on [pkgpal](https://github.com/marcus-crane/pkgpal), I got stuck on how to parse package.json files.
+
+It wouldn't be such a pain if they weren't multiple keys deep.
+
+I don't think it was particularly difficult, I just didn't understand enough about golang was all.
+
+Anyway, here's how I accomplished it.
+
 ```go
 package main
 

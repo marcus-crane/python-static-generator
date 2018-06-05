@@ -6,4 +6,4 @@ lang: go
 testing: yes
 ---
 
-This part of the post should be ignored
+This part of the post contains all the good stuff!
