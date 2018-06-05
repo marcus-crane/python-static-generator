@@ -1,4 +1,4 @@
-from markdown.technical import Technical
+from markdown.classes.technical import Technical
 from test import utils
 
 

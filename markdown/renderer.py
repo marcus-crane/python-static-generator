@@ -9,3 +9,6 @@ class PostRenderer(mistune.Renderer):
             return f'<pre class="code"><code>{code}</code></pre>'
         return f'<pre class="code" data-lang="{lang}">' \
                f'<code>{code}</code></pre>'
+
+    def block_quote(self, text):
+        return f'<blockquote>{text}</blockquote>'

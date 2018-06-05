@@ -1,4 +1,4 @@
-from markdown.base import Base
+from markdown.classes.base import Base
 
 
 class Thought(Base):

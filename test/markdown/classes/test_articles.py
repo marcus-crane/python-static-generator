@@ -1,4 +1,4 @@
-from markdown.articles import Article
+from markdown.classes.articles import Article
 from test import utils
 
 

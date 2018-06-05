@@ -1,4 +1,4 @@
-from markdown.thoughts import Thought
+from markdown.classes.thoughts import Thought
 from test import utils
 
 

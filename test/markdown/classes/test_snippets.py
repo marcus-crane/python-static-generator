@@ -1,4 +1,4 @@
-from markdown.snippets import Snippet
+from markdown.classes.snippets import Snippet
 from test import utils
 
 

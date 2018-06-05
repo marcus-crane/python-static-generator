@@ -1,4 +1,4 @@
-from markdown.reviews import Review
+from markdown.classes.reviews import Review
 from test import utils
 
 
