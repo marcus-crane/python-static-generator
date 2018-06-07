@@ -4,7 +4,7 @@ from test import utils
 
 def test_parse_project_data():
     post = "---\ntitle: Neat\ndescription: A project\nyear: 1970\n" \
-           "lang: ruby\ncss: thing.css\njs: stuff.js\n---\n"
+           "lang: ruby\ncss: thing.css\njs: stuff.js\n---\n\nA post"
     expected = {'title': 'Neat', 'description': 'A project', 'year': '1970',
                 'lang': 'ruby', 'css': 'thing.css', 'js': 'stuff.js'}
     project = Project(post)
@@ -13,7 +13,7 @@ def test_parse_project_data():
 
 
 def test_missing_project_data():
-    post = "---\ninvalid---\n"
+    post = "---\ninvalid---\n\nA post"
     expected = {'title': '', 'description': '', 'year': '',
                 'lang': '', 'css': '', 'js': ''}
     project = Project(post)
@@ -22,7 +22,7 @@ def test_missing_project_data():
 
 
 def test_project_missing_half_meta():
-    post = "---\ntitle: Neat\ndescription: A project\nyear: 1970\n---\n"
+    post = "---\ntitle: Neat\ndescription: A project\nyear: 1970\n---\n\nHello"
     expected = {'title': 'Neat', 'description': 'A project', 'year': '1970',
                 'lang': '', 'css': '', 'js': ''}
     project = Project(post)

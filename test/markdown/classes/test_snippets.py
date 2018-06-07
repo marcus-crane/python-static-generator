@@ -4,7 +4,7 @@ from test import utils
 
 def test_parse_snippet_data():
     post = "---\ntitle: Cool Snippet\nlang: python\nlink: " \
-           "https://example.com\n---\n"
+           "https://example.com\n---\n\nA post"
     expected = {'title': 'Cool Snippet', 'lang': 'python',
                 'link': 'https://example.com'}
     snippet = Snippet(post)
@@ -13,7 +13,7 @@ def test_parse_snippet_data():
 
 
 def test_missing_snippet_data():
-    post = "---\ninvalid---\n"
+    post = "---\ninvalid---\n\nA post"
     expected = {'title': '', 'lang': '', 'link': ''}
     snippet = Snippet(post)
     actual = snippet._get_metadata()
@@ -21,7 +21,7 @@ def test_missing_snippet_data():
 
 
 def test_snippet_missing_half_meta():
-    post = "---\ntitle: Snip Snip\nlang: go\n---\n"
+    post = "---\ntitle: Snip Snip\nlang: go\n---\n\nA post"
     expected = {'title': 'Snip Snip', 'lang': 'go', 'link': ''}
     snippet = Snippet(post)
     actual = snippet._get_metadata()

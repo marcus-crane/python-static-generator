@@ -3,7 +3,7 @@ from test import utils
 
 
 def test_parse_thought_data():
-    post = "---\ntitle: Thonking\ndate: 1970\n---\n"
+    post = "---\ntitle: Thonking\ndate: 1970\n---\n\nA post"
     expected = {'title': 'Thonking', 'date': '1970'}
     thought = Thought(post)
     actual = thought._get_metadata()
@@ -11,7 +11,7 @@ def test_parse_thought_data():
 
 
 def test_missing_thought_data():
-    post = "---\ninvalid---\n"
+    post = "---\ninvalid---\n\nA post"
     expected = {'title': '', 'date': ''}
     thought = Thought(post)
     actual = thought._get_metadata()
@@ -19,7 +19,7 @@ def test_missing_thought_data():
 
 
 def test_thought_missing_half_meta():
-    post = "---\ntitle: Thonking\n---\n"
+    post = "---\ntitle: Thonking\n---\n\nA post"
     expected = {'title': 'Thonking', 'date': ''}
     thought = Thought(post)
     actual = thought._get_metadata()

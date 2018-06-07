@@ -14,7 +14,7 @@ class Base:
         data = m.group(1)
         items = data.split('\n')[:-1]
         for item in items:
-            key, value = item.split(':')
+            key, value = item.split(':', 1)
             metadata[key.strip()] = value.replace('\n', '').strip()
         return metadata
 
