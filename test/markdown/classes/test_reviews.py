@@ -1,4 +1,4 @@
-from markdown.classes.reviews import Review
+from utf9k.markdown.classes.reviews import Review
 from test import utils
 
 

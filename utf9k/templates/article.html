@@ -1,0 +1,20 @@
+{% extends 'shared/base.html' %}
+
+{% block title %}{{ post.title }} | utf9k{% endblock %}
+
+{% block nav %}utf9k{% endblock %}
+{% block blog %}[ blog ]{% endblock %}
+
+{% block content %}
+<div class="container col-8 col-md-10 col-sm-11 pushback">
+  <div class="columns">
+    <div class="column">
+      <h2 class="{% if not post.sfw %}d-inline-block {% endif %}mb-0">{{ post.title }}</h2>
+      <time class="d-block pb-2">{{ post.date }}</time>
+      <div class="pt-2">
+        {{ post.render|safe }}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

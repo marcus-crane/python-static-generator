@@ -1,10 +1,12 @@
-from markdown.classes.base import Base
+from utf9k.markdown.classes.base import Base
 
 
 class Snippet(Base):
 
     def __init__(self, content):
         super(Snippet, self).__init__(content)
+        self.template = 'snippet.html'
+        self.template_list = 'snippets.html'
 
     def _get_metadata(self):
         return {

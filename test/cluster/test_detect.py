@@ -4,7 +4,7 @@ import tempfile
 
 import pytest
 
-from bundler import detect
+from utf9k.cluster import detect
 
 
 @pytest.fixture()
@@ -100,3 +100,45 @@ def test_content_three_folder_two_ext():
     actual = detect.content_scan(base, content, extensions)
     assert expected == actual
     shutil.rmtree(base)
+
+
+def test_detect_type_article():
+    path = "sei/shiuh/articles/article.md"
+    expected = "article"
+    actual = detect.content_type(path)
+    assert expected == actual
+
+
+def test_detect_type_projects():
+    path = "sei/shiuh/projects/project.md"
+    expected = "project"
+    actual = detect.content_type(path)
+    assert expected == actual
+
+
+def test_detect_type_reviews():
+    path = "sei/shiuh/reviews/review.md"
+    expected = "review"
+    actual = detect.content_type(path)
+    assert expected == actual
+
+
+def test_detect_type_snippets():
+    path = "sei/shiuh/snippets/snippet.md"
+    expected = "snippet"
+    actual = detect.content_type(path)
+    assert expected == actual
+
+
+def test_detect_type_bites():
+    path = "sei/shiuh/bites/bite.md"
+    expected = "bite"
+    actual = detect.content_type(path)
+    assert expected == actual
+
+
+def test_detect_type_not_found():
+    path = "sei/shiuh/random/test.txt"
+    expected = None
+    actual = detect.content_type(path)
+    assert expected == actual

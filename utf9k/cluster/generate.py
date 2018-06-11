@@ -1,7 +1,7 @@
 import os
 import shutil
 
-from bundler.settings import Constants
+from utf9k.settings import Constants
 
 
 def make_directory(path):

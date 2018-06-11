@@ -3,7 +3,7 @@ import tempfile
 
 import pytest
 
-from bundler import generate
+from utf9k.cluster import generate
 
 
 def test_generate_create_directory_success():

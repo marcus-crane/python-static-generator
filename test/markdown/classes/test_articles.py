@@ -1,4 +1,4 @@
-from markdown.classes.articles import Article
+from utf9k.markdown.classes.articles import Article
 from test import utils
 
 

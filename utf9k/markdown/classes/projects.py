@@ -1,10 +1,12 @@
-from markdown.classes.base import Base
+from utf9k.markdown.classes.base import Base
 
 
 class Project(Base):
 
     def __init__(self, content):
         super(Project, self).__init__(content)
+        self.template = 'project.html'
+        self.template_list = 'projects.html'
 
     def _get_metadata(self):
         return {

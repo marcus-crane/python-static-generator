@@ -1,5 +1,5 @@
 from invoke import task
-from bundler.settings import Constants
+from utf9k.settings import Constants
 
 
 @task

@@ -1,4 +1,4 @@
-from markdown.classes.projects import Project
+from utf9k.markdown.classes.projects import Project
 from test import utils
 
 

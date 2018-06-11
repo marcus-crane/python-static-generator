@@ -1,4 +1,7 @@
-from markdown.classes.base import Base
+from jinja2 import Template, TemplateNotFound
+import pytest
+
+from utf9k.markdown.classes.base import Base
 from test import utils
 
 
@@ -84,4 +87,38 @@ def test_parse_file_content():
     post = utils.load_fixture(__file__, 'post.md')
     expected = "This part of the post contains all the good stuff!"
     actual = Base._extract_content(post)
+    assert expected == actual
+
+
+def test_get_template():
+    post = utils.load_fixture(__file__, 'post.md')
+    base = Base(post)
+    base.app_name = "test"
+    base.template_folder = "markdown/classes/fixtures"
+    base.template = "post.html"
+    actual = base._get_template()
+    assert isinstance(actual, Template)
+    assert "post.html" == actual.name
+
+
+def test_get_invalid_template():
+    post = utils.load_fixture(__file__, 'post.md')
+    base = Base(post)
+    base.app_name = "test"
+    base.template_folder = "markdown/classes/fixtures"
+    base.template = "nothing.html"
+    with pytest.raises(TemplateNotFound):
+        base._get_template()
+
+
+def test_render_template():
+    post = utils.load_fixture(__file__, 'post.md')
+    base = Base(post)
+    base.app_name = "test"
+    base.template_folder = "markdown/classes/fixtures"
+    base.template = "post.html"
+    expected = utils.load_fixture(__file__, 'post_render.html')
+    actual = base._render_template(title=base.meta['title'],
+                                   date=base.meta['date'],
+                                   content=base.content)
     assert expected == actual

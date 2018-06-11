@@ -1,31 +1,30 @@
-{% extends 'shared/base.html' %}
+{% extends 'base.html' %}
 
-{% block title %}utf9k{% endblock %}
+{% block title %}utf9k | articles{% endblock %}
 
-{% block nav %}utf9k{% endblock %}
-{% block blog %}[ blog ]{% endblock %}
+{% block nav %}big words{% endblock %}
+{% block blog %}[ articles ]{% endblock %}
 
 {% block content %}
 <div class="container col-11 pushback">
   <div class="columns">
     <div class="column col-9 col-sm-12">
-    {% for post in posts %}
+    {% for article in articles %}
       <div class="tile tile-centered ml-2 blog-entry">
         <div class="tile-content">
           <div class="tile-title">
-            <a href="{{ post.slug }}">
-              {{ post.title }}
+            <a href="{{ article.slug }}">
+              {{ article.title }}
             </a>
-            {% if not post.sfw %}<sup class="nsfw">nsfw</sup>{% endif %}
           </div>
           <div class="tile-subtitle text-gray">
-            {{ post.published_at|date:"N d, Y" }}
+            {{ article.date|date:"N d, Y" }}
           </div>
         </div>
       </div>
     {% empty %}
       <div class="empty">
-        <p class="empty-title h5">No blog posts</p>
+        <p class="empty-title h5">No articles</p>
         <p class="empty-subtitle">Nothing has been written anything yet!</p>
       </div>
     {% endfor %}

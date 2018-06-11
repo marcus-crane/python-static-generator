@@ -1,10 +1,12 @@
-from markdown.classes.base import Base
+from utf9k.markdown.classes.base import Base
 
 
-class Thought(Base):
+class Bite(Base):
 
     def __init__(self, content):
-        super(Thought, self).__init__(content)
+        super(Bite, self).__init__(content)
+        self.template = 'bite.html'
+        self.template_list = 'bites.html'
 
     def _get_metadata(self):
         return {

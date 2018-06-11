@@ -1,4 +1,4 @@
-from markdown.renderer import PostRenderer
+from utf9k.markdown.renderer import PostRenderer
 
 import mistune
 

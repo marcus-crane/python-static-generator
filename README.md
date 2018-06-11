@@ -20,4 +20,4 @@ Here's some links that describe different types of content I want to host on my 
 * [projects](/docs/projects.md)
 * [reviews](/docs/reviews.md)
 * [snippets](/docs/snippets.md)
-* [thoughts](/docs/thoughts.md)
+* [thoughts](/docs/bites.md)
