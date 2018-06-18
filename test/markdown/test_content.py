@@ -1,100 +1,96 @@
+from datetime import date
+
 from jinja2 import Template, TemplateNotFound
 import pytest
 
-from utf9k.markdown.classes.base import Base
+from utf9k.markdown.content import Content
 from test import utils
 
 
 def test_parse_title():
     post = "---\ntitle: This is a title\n---\n"
     expected = {'title': 'This is a title'}
-    actual = Base._extract_metadata(post)
+    actual = Content._extract_meta(post)
     assert expected == actual
 
 
 def test_parse_date():
     post = "---\ndate: 2018-01-01\n---\n"
-    expected = {'date': '2018-01-01'}
-    actual = Base._extract_metadata(post)
+    expected = {'date': date(2018, 1, 1)}
+    actual = Content._extract_meta(post)
     assert expected == actual
 
 
 def test_parse_safe_for_work_true():
     post = "---\nsfw: yes\n---\n"
-    expected = {'sfw': 'yes'}
-    actual = Base._extract_metadata(post)
+    expected = {'sfw': True}
+    actual = Content._extract_meta(post)
     assert expected == actual
 
 
 def test_parse_safe_for_work_false():
     post = "---\nsfw: no\n---\n"
-    expected = {'sfw': 'no'}
-    actual = Base._extract_metadata(post)
+    expected = {'sfw': False}
+    actual = Content._extract_meta(post)
     assert expected == actual
 
 
 def test_parse_language():
     post = "---\nlang: go\n---\n"
     expected = {'lang': 'go'}
-    actual = Base._extract_metadata(post)
+    actual = Content._extract_meta(post)
     assert expected == actual
 
 
 def test_parse_date_and_title():
     post = "---\ntitle: This is a title\ndate: 2018-01-01\n---\n"
-    expected = {'title': 'This is a title', 'date': '2018-01-01'}
-    actual = Base._extract_metadata(post)
+    expected = {'title': 'This is a title', 'date': date(2018, 1, 1)}
+    actual = Content._extract_meta(post)
     assert expected == actual
 
 
 def test_parse_sfw_and_language():
     post = "---\nsfw: yes\nlang: python\n---\n"
-    expected = {'sfw': 'yes', 'lang': 'python'}
-    actual = Base._extract_metadata(post)
+    expected = {'sfw': True, 'lang': 'python'}
+    actual = Content._extract_meta(post)
     assert expected == actual
 
 
 def test_strip_whitespace():
     post = "---\nsfw   :    yes     \n---\n"
-    expected = {'sfw': 'yes'}
-    actual = Base._extract_metadata(post)
-    assert expected == actual
-
-
-def test_condensed_keys():
-    post = "---\ntitle:thereisnospace\n---\n"
-    expected = {'title': 'thereisnospace'}
-    actual = Base._extract_metadata(post)
+    expected = {'sfw': True}
+    actual = Content._extract_meta(post)
     assert expected == actual
 
 
 def test_parse_post():
     post = "---\ntitle: bleh\n---\n\nThis is a post"
     expected = "This is a post"
-    actual = Base._extract_content(post)
+    actual = Content._extract_content(post)
     assert expected == actual
 
 
 def test_parse_file_meta():
     post = utils.load_fixture(__file__, 'post.md')
-    expected = {'title': 'This is a post', 'date': '2018-01-01',
-                'sfw': 'no', 'lang': 'go', 'testing': 'yes'}
-    actual = Base._extract_metadata(post)
+    expected = {'type': 'base', 'title': 'This is a post',
+                'date': date(2018, 1, 1),
+                'sfw': False, 'lang': 'go', 'testing': True}
+    actual = Content._extract_meta(post)
     assert expected == actual
 
 
 def test_parse_file_content():
     post = utils.load_fixture(__file__, 'post.md')
     expected = "This part of the post contains all the good stuff!"
-    actual = Base._extract_content(post)
+    actual = Content._extract_content(post)
     assert expected == actual
 
 
 def test_get_template():
     post = utils.load_fixture(__file__, 'post.md')
-    base = Base(post)
+    base = Content(post)
     base.app_name = "test"
-    base.template_folder = "markdown/classes/fixtures"
+    base.template_folder = "markdown/fixtures"
     base.template = "post.html"
     actual = base._get_template()
     assert isinstance(actual, Template)
@@ -103,9 +99,9 @@ def test_get_template():
 
 def test_get_invalid_template():
     post = utils.load_fixture(__file__, 'post.md')
-    base = Base(post)
+    base = Content(post)
     base.app_name = "test"
-    base.template_folder = "markdown/classes/fixtures"
+    base.template_folder = "markdown/fixtures"
     base.template = "nothing.html"
     with pytest.raises(TemplateNotFound):
         base._get_template()
@@ -113,12 +109,26 @@ def test_get_invalid_template():
 
 def test_render_template():
     post = utils.load_fixture(__file__, 'post.md')
-    base = Base(post)
+    base = Content(post)
     base.app_name = "test"
-    base.template_folder = "markdown/classes/fixtures"
+    base.template_folder = "markdown/fixtures"
     base.template = "post.html"
     expected = utils.load_fixture(__file__, 'post_render.html')
     actual = base._render_template(title=base.meta['title'],
                                    date=base.meta['date'],
-                                   content=base.content)
+                                   content=base.post)
+    assert expected == actual
+
+
+def test_render_template_kwargs():
+    post = utils.load_fixture(__file__, 'post.md')
+    base = Content(post)
+    base.app_name = "test"
+    base.template_folder = "markdown/fixtures"
+    base.template = "post.html"
+    expected = utils.load_fixture(__file__, 'post_render.html')
+    data = {'title': base.meta['title'],
+            'date': base.meta['date'],
+            'content': base.post}
+    actual = base._render_template(**data)
     assert expected == actual

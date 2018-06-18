@@ -1,5 +1,9 @@
 # utf9k
 
+**ARCHIVED:** This was an attempt at a static site generator that I started, and still considered finishing but I ended up discovering gatsby which, so far, as kinda given me a bunch of stuff I was after anyway. I decided the pain of an elaborate site just isn't worth it, ahaha. I'm gonna leave the code here as a reminder though. There's some useful stuff in it I might reuse anyway.
+
+---
+
 This README is more just to explain to myself what I'm trying to achieve rather than to explain why you might want to look at/fork this repo.
 
 I've always hacked away at different versions of my site ([https://thingsima.de](https://thingsima.de)) and never been quite happy with the end result. It's a mix of content that is dynamic and static when I wish it was either one or the other.

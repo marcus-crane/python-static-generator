@@ -7,12 +7,14 @@ import yaml
 from utf9k.settings import Constants
 
 
-class Base:
+class Content:
     def __init__(self, content):
-        self.meta = self._extract_metadata(content)
+        self.meta = self._extract_meta(content)
         self.post = self._extract_content(content)
         self.app_name = Constants.APPLICATION_NAME
         self.template_folder = Constants.TEMPLATES_DIR
+        self.template = self.meta['type'] + '.html'
+        self.template_list = self.meta['type'] + '_list.html'
 
     def _get_template(self):
         try:
@@ -28,7 +30,11 @@ class Base:
         template = self._get_template()
         return template.render(**kwargs)
 
-    def _extract_meta(self, post):
+    def render(self):
+        pass
+
+    @staticmethod
+    def _extract_meta(post):
         pattern = "---\\n(.+)---\\n"
         m = re.search(pattern, post, re.DOTALL)
         details = m.group(1)
